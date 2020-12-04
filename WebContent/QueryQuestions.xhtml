@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:p="http://primefaces.org/ui">
+
+
+
+<h:head><title>QueryQuestions</title>
+
+</h:head>
+
+<h:body>
+<h:form id="nagusia">
+<table><tr>
+
+<td><h3>Event Date</h3></td>
+<td><h3>Events on: <h:outputText id="eguna" value="#{queryBean.data}"/></h3></td>
+</tr>
+<tr>
+<td>
+<p:calendar id="data" value="#{queryBean.data}" navigator="false" mode="inline">
+	<p:ajax event="dateSelect" listener="#{queryBean.onDateSelect}" update="gertaeraZerrenda galderaZerrenda eguna"></p:ajax>
+</p:calendar>
+</td>
+<td>
+<p:dataTable id="gertaeraZerrenda" value="#{queryBean.gertaerak}" var="item" border="1" selectionMode="single"
+                             rowKey="#{item.eventNumber}"
+                             selection="#{queryBean.ev}">
+	<p:ajax event="rowSelect" listener="#{queryBean.onEventSelect}" update=":nagusia:galderaZerrenda" ></p:ajax>
+	<f:facet name="header"> EVENTS </f:facet>
+	<p:column><f:facet name="header"> Event# </f:facet>#{item.eventNumber}</p:column>
+	<p:column><f:facet name="header"> Description </f:facet>#{item.description}</p:column>
+	
+	
+</p:dataTable>
+</td>
+</tr>
+</table >
+<p:dataTable id="galderaZerrenda" value="#{queryBean.galderak}" var ="item" border="1">
+	<f:facet name="header"> QUESTIONS</f:facet>
+	<p:column><f:facet name="header"> Question# </f:facet>#{item.questionNumber}</p:column>
+	<p:column><f:facet name="header"> Description </f:facet>#{item.question}</p:column>
+
+</p:dataTable>
+
+<h:commandButton value="Close" action="close" actionListener = "#{queryBean.updateData}">
+</h:commandButton>
+</h:form>
+</h:body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:p="http://primefaces.org/ui">
+
+
+
+<h:head><title>CreateQuestion</title>
+
+</h:head>
+
+<h:body>
+<h:form>
+<table><tr>
+
+<td><h3>Event Date</h3></td>
+<td><h3>Events:</h3></td>
+</tr>
+<tr>
+<td>
+<p:calendar id="data" value="#{createBean.data}" navigator="false" mode="inline">
+	<p:ajax event="dateSelect" listener="#{createBean.onDateSelect}" update="gertaeraZerrenda"></p:ajax>
+</p:calendar>
+</td>
+<td>
+<h:selectOneMenu id ="gertaeraZerrenda" value="#{createBean.ev}" >
+<f:selectItems value="#{createBean.gertaerak}"/>
+
+
+</h:selectOneMenu>
+</td>question
+
+</tr>
+
+<tr>
+<td>
+<P>Question:</P>
+</td>
+<td>
+<h:inputText value="#{createBean.newQuestion}"></h:inputText>
+</td>
+</tr>
+<tr>
+<td>
+Min Bet: 
+</td>
+<td>
+<h:inputText id="minBet" value="#{createBean.newMinBet}"></h:inputText>
+</td>
+</tr>
+<tr>
+<td>
+<h:commandButton value="CreateQuestion"/>
+</td>
+<td>
+<h:commandButton value="Close" action="close" actionListener = "#{createBean.updateData}"/>
+</td>
+</tr>
+</table>
+</h:form>
+</h:body>
+
+</html>
