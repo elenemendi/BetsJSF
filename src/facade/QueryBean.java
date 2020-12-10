@@ -72,6 +72,9 @@ public class QueryBean {
 		galderak = ((Event) event.getObject()).getQuestions();
 	}
 	
+	public void galderaSortu() {
+		
+	}
 	public void updateData(ActionEvent e) {
 		   data = null;
 		   galderak = null;

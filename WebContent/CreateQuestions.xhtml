@@ -26,12 +26,16 @@ xmlns:p="http://primefaces.org/ui">
 </p:calendar>
 </td>
 <td>
-<h:selectOneMenu id ="gertaeraZerrenda" value="#{createBean.ev}" >
-<f:selectItems value="#{createBean.gertaerak}"/>
-
-
-</h:selectOneMenu>
-</td>question
+<p:dataTable id="gertaeraZerrenda" value="#{createBean.gertaerak}" var="item" border="1" selectionMode="single"
+                             rowKey="#{item.eventNumber}"
+                             selection="#{createBean.ev}">
+	<p:ajax event="rowSelect" listener="#{createBean.onEventSelect}" ></p:ajax>
+	<f:facet name="header"> EVENTS </f:facet>
+	<p:column><f:facet name="header"> Event# </f:facet>#{item.eventNumber}</p:column>
+	<p:column><f:facet name="header"> Description </f:facet>#{item.description}</p:column>
+		
+</p:dataTable>
+</td>question 
 
 </tr>
 
@@ -40,7 +44,7 @@ xmlns:p="http://primefaces.org/ui">
 <P>Question:</P>
 </td>
 <td>
-<h:inputText value="#{createBean.newQuestion}"></h:inputText>
+<h:inputText id = "newQuestion" name="newQuestion" value="#{createBean.newQuestion}" render ="mezuak"></h:inputText>
 </td>
 </tr>
 <tr>
@@ -48,18 +52,19 @@ xmlns:p="http://primefaces.org/ui">
 Min Bet: 
 </td>
 <td>
-<h:inputText id="minBet" value="#{createBean.newMinBet}"></h:inputText>
+<h:inputText id="minBet" name="minBet" value="#{createBean.newMinBet}" render="mezuak"></h:inputText>
 </td>
 </tr>
 <tr>
 <td>
-<h:commandButton value="CreateQuestion"/>
+<h:commandButton value="CreateQuestion" action="#{createBean.galderaSortu}" render="mezuak"/>
 </td>
 <td>
 <h:commandButton value="Close" action="close" actionListener = "#{createBean.updateData}"/>
 </td>
 </tr>
 </table>
+<h:messages id="mezuak" style="color:red"/>
 </h:form>
 </h:body>
 
