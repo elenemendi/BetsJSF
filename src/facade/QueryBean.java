@@ -1,6 +1,10 @@
 package facade;
 
+import java.util.Collections;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.Vector;
 import java.util.Vector;
 
 import javax.faces.event.ActionEvent;
@@ -64,12 +68,20 @@ public class QueryBean {
 	public void onDateSelect(SelectEvent event)
 	{
 		galderak = null;
-		gertaerak= facadeBL.getEvents((Date)event.getObject());
+		gertaerak= (Vector<Event>) facadeBL.getEvents((Date)event.getObject());
 	}
 	
+	
+	@SuppressWarnings("unchecked")
 	public void onEventSelect(SelectEvent event) {
-		
-		galderak = ((Event) event.getObject()).getQuestions();
+		Set<Question> galderakSet = new HashSet<Question>();
+		Vector<Question>galderakV = new Vector<Question>();
+		galderakSet = ((Event) event.getObject()).getQuestions();
+		for (Question q: galderakSet) {
+			galderakV.add(q);
+		}
+		Collections.sort(galderakV);
+		this.galderak=galderakV;
 	}
 	
 	public void galderaSortu() {

@@ -1,6 +1,7 @@
 package facade;
 
 import java.util.Date;
+import java.util.Set;
 import java.util.Vector;
 
 import javax.faces.application.FacesMessage;
@@ -28,7 +29,7 @@ public class CreateBean {
 	
 	public CreateBean() {
 		facadeBL=FacadeBean.getBusinessLogic();
-		gertaerak=facadeBL.getEvents(data);
+		gertaerak=(Vector<Event>) facadeBL.getEvents(data);
 	}
 	public BLFacade getFacadeBL() {
 		return facadeBL;
@@ -69,7 +70,7 @@ public class CreateBean {
 	
 	public void onDateSelect(SelectEvent event){
 		
-		gertaerak= facadeBL.getEvents((Date)event.getObject());
+		gertaerak= (Vector<Event>) facadeBL.getEvents((Date)event.getObject());
 	}
 	
 	public void onEventSelect(SelectEvent event) {
@@ -79,6 +80,7 @@ public class CreateBean {
 	}
 	
 	public void galderaSortu() throws EventFinished, QuestionAlreadyExist {
+		try {
 		System.out.println("nire ebentua"+ev);
 		System.out.println("nire galdera"+newQuestion);  
 		  if(ev==null){
@@ -94,7 +96,13 @@ public class CreateBean {
 		   facadeBL.createQuestion(ev,newQuestion, newMinBet);
 		   FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Galdera gorde da!"));
 		  }
-		 }
+		 
+	}catch(EventFinished e){
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Errorea: gertaera amaitu da!"));
+	}catch(QuestionAlreadyExist e) {
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Errorea: galdera existitzen da dagoeneko!"));
+	}
+	}
 	
 	public void updateData(ActionEvent e) {
 		   data = null;

@@ -1,6 +1,7 @@
 package facade;
 
 import java.util.Date;
+import java.util.Set;
 import java.util.Vector;
 
 import businessLogic.BLFacade;
@@ -49,7 +50,7 @@ public class FacadeBean {
 		 return facadeInterface.getEvents(this.data);
 		 }
 	 
-	 public Vector<Question> getQuestions(Event ev){
+	 public Set<Question> getQuestions(Event ev){
 		return ev.getQuestions();
 	 }
 	 
