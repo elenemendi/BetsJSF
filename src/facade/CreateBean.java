@@ -89,7 +89,7 @@ public class CreateBean {
 		  else if(newQuestion.isEmpty()) {
 		    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Errorea: bete eremu guztiak."));
 		   }
-		  else if(newMinBet<0.0) {
+		  else if(newMinBet<=0.0) {
 		   FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Errorea: zenbakizko balio okerra."));
 		  }
 		  else {
