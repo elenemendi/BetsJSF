@@ -17,6 +17,7 @@ import exceptions.QuestionAlreadyExist;
 /**
  * It implements the business logic as a web service.
  */
+
 @WebService(endpointInterface = "businessLogic.BLFacade")
 public class BLFacadeImplementation  implements BLFacade {
 
@@ -24,7 +25,7 @@ public class BLFacadeImplementation  implements BLFacade {
 		System.out.println("Creating BLFacadeImplementation instance");
 	
 		DataAccesHibernate dbManager = new DataAccesHibernate();
-		dbManager.initializeDB();
+		//dbManager.initializeDB();
 			
 		
 	}
@@ -91,11 +92,17 @@ public class BLFacadeImplementation  implements BLFacade {
 	 * This method invokes the data access to initialize the database with some events and questions.
 	 * It is invoked only when the option "initialize" is declared in the tag dataBaseOpenMode of resources/config.xml file
 	 */	
-    @WebMethod	
+	/* @WebMethod	
 	 public void initializeBD(){
     	DataAccesHibernate dbManager = new DataAccesHibernate();
 		dbManager.initializeDB();
 		
+	}*/
+	
+	public Vector<Event> getAllEvents(){
+		DataAccesHibernate dbManager = new DataAccesHibernate();
+		Vector<Event>  evs=dbManager.getAllEvents();
+		return evs;
 	}
 
 }

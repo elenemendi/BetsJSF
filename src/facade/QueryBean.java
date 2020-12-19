@@ -15,15 +15,19 @@ import businessLogic.BLFacade;
 import domain.Event;
 import domain.Question;
 public class QueryBean {
+	
 	private BLFacade facadeBL;
 	private Vector<Event> gertaerak;
 	private Date data;
 	private Event ev;
 	private Vector<Question> galderak;
+	private Vector<Event>gertaeraGuztiak;
 	
+
 	public QueryBean() {
 		facadeBL=FacadeBean.getBusinessLogic();
 		gertaerak=facadeBL.getEvents(data);
+		gertaeraGuztiak = facadeBL.getAllEvents();
 	}
 	public BLFacade getFacadeBL() {
 		return facadeBL;
@@ -64,6 +68,13 @@ public class QueryBean {
 	public void setGalderak(Vector<Question> galderak) {
 		this.galderak = galderak;
 	}
+	
+	public Vector<Event> getGertaeraGuztiak() {
+		return gertaeraGuztiak;
+	}
+	public void setGertaeraGuztiak(Vector<Event> gertaeraGuztiak) {
+		this.gertaeraGuztiak = gertaeraGuztiak;
+	}
 
 	public void onDateSelect(SelectEvent event)
 	{
@@ -72,7 +83,7 @@ public class QueryBean {
 	}
 	
 	
-	@SuppressWarnings("unchecked")
+
 	public void onEventSelect(SelectEvent event) {
 		Set<Question> galderakSet = new HashSet<Question>();
 		Vector<Question>galderakV = new Vector<Question>();
@@ -94,6 +105,11 @@ public class QueryBean {
 		   ev = null;
 		}
 	
+//	public void getAllEvents() {
+//		gertaerak=null;
+//		gertaerak=facadeBL.getAllEvents();
+//	}
+//	
 	
 }
 

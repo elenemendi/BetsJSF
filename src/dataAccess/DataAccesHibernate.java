@@ -26,7 +26,7 @@ public class DataAccesHibernate {
 	public DataAccesHibernate (){
 		
 	}
-	
+
 public void initializeDB(){
 		
 	Session session= HibernateUtil.getSessionFactory().getCurrentSession();
@@ -171,6 +171,20 @@ public Vector<Event> getEvents(Date date) {
 	}
 	return res;
 	
+	
+}
+
+public Vector<Event> getAllEvents(){
+	System.out.println(">> DataAccess: getEvents");
+	Vector<Event> res= new Vector<Event>();
+	Session session= HibernateUtil.getSessionFactory().getCurrentSession(); 
+	session.beginTransaction();
+	Query q= session.createQuery("from Event ev");
+	List result=q.list();
+	for (int i =0;i<result.size();i++) {
+		res.add((Event)result.get(i));
+	}
+	return res;
 	
 }
 

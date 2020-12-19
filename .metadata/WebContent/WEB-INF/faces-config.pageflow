@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf16066558638520" configfile="/BetsJSF/WebContent/WEB-INF/faces-config.xml">
-  <nodes xsi:type="pageflow:PFPage" name="ApplicationLauncher.xhtml" x="300" y="324" id="pf16066560922621" referenceLink="//@navigationRule.3/@navigationCase.0/@toViewId|" outlinks="pf16066560922622 pf16066560922623" inlinks="pf16069173741560 pf16069173741561" path="/ApplicationLauncher.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="ApplicationLauncher.xhtml" x="300" y="324" id="pf16066560922621" referenceLink="//@navigationRule.5/@navigationCase.0/@toViewId|" outlinks="pf16066560922622 pf16066560922623 pf16082956588120" inlinks="pf16069173741560 pf16069173741561" path="/ApplicationLauncher.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="CreateQuestions.xhtml" x="636" y="216" id="pf16066560922624" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf16069173741560" inlinks="pf16066560922622" path="/CreateQuestions.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="QueryQuestions.xhtml" x="627" y="381" id="pf16066560922625" referenceLink="//@navigationRule.3/@fromViewId|" outlinks="pf16069173741561" inlinks="pf16066560922623" path="/QueryQuestions.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="ShowAllEvents.xhtml" x="633" y="96" id="pf16082956588132" referenceLink="//@navigationRule.5/@fromViewId|" inlinks="pf16082956588120" path="/ShowAllEvents.xhtml"/>
   <links id="pf16066560922622" target="pf16066560922624" source="pf16066560922621" outcome="create"/>
   <links id="pf16066560922623" target="pf16066560922625" source="pf16066560922621" outcome="query"/>
   <links id="pf16069173741560" target="pf16066560922621" source="pf16066560922624" outcome="close"/>
   <links id="pf16069173741561" target="pf16066560922621" source="pf16066560922625" outcome="close"/>
+  <links id="pf16082956588120" target="pf16082956588132" source="pf16066560922621" outcome="show"/>
 </pageflow:Pageflow>
